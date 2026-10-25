@@ -47,18 +47,18 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="bg-[#030712] text-white py-24"
+      className="bg-[#030712] py-20 text-white sm:py-24"
     >
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
 
         <div className="mb-14">
-          <h2 className="text-5xl font-bold">
+          <h2 className="text-4xl font-bold sm:text-5xl">
             Featured Projects
           </h2>
 
-          <div className="mt-4 w-14 h-1 rounded-full bg-blue-500"></div>
+          <div className="mt-4 w-14 h-1 rounded-full theme-accent-bg"></div>
         </div>
 
         {/* Grid */}
@@ -86,8 +86,8 @@ export default function Projects() {
                   p-6
                   transition-all
                   duration-300
-                  hover:border-blue-500/60
-                  hover:shadow-[0_0_35px_rgba(37,99,235,.18)]
+                  theme-accent-hover-border
+                  theme-accent-glow-hover
                 "
               >
                 <div className="flex items-start gap-5">
@@ -99,15 +99,13 @@ export default function Projects() {
                       w-16
                       h-16
                       rounded-2xl
-                      bg-gradient-to-br
-                      from-blue-700
-                      to-blue-950
+                      theme-accent-card-gradient
                       border
-                      border-blue-600/40
+                      theme-accent-border
                       flex
                       items-center
                       justify-center
-                      shadow-[0_0_25px_rgba(37,99,235,.35)]
+                      theme-accent-glow
                       shrink-0
                     "
                   >
@@ -118,7 +116,7 @@ export default function Projects() {
 
                   <div>
 
-                    <h3 className="text-2xl font-bold leading-snug">
+                    <h3 className="text-xl font-bold leading-snug sm:text-2xl">
                       {project.title}
                     </h3>
 
@@ -129,7 +127,7 @@ export default function Projects() {
                     <button
                       className="
                         mt-5
-                        text-blue-500
+                        theme-accent-text
                         group-hover:translate-x-2
                         transition-transform
                       "

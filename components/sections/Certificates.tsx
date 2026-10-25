@@ -22,11 +22,11 @@ export default function Certificates() {
         {/* Heading */}
 
         <div className="mb-14">
-          <h2 className="text-5xl font-bold">
+          <h2 className="text-4xl font-bold sm:text-5xl">
             Certifications
           </h2>
 
-          <div className="mt-4 h-1 w-12 rounded-full bg-blue-500"></div>
+          <div className="mt-4 h-1 w-12 rounded-full theme-accent-bg"></div>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2">
@@ -53,11 +53,11 @@ export default function Certificates() {
                 border-white/10
                 bg-white/[0.03]
                 backdrop-blur-xl
-                p-8
+                p-5 sm:p-8
                 transition-all
                 duration-300
-                hover:border-blue-500/60
-                hover:shadow-[0_0_30px_rgba(37,99,235,.18)]
+                theme-accent-hover-border
+                theme-accent-glow-hover
               "
             >
               <div
@@ -69,11 +69,9 @@ export default function Certificates() {
                   justify-center
                   rounded-2xl
                   border
-                  border-blue-600/40
-                  bg-gradient-to-br
-                  from-blue-700
-                  to-blue-950
-                  shadow-[0_0_30px_rgba(37,99,235,.35)]
+                  theme-accent-border
+                  theme-accent-card-gradient
+                  theme-accent-glow
                   shrink-0
                 "
               >
@@ -81,11 +79,11 @@ export default function Certificates() {
               </div>
 
               <div>
-                <h3 className="text-3xl font-bold leading-tight">
+                <h3 className="text-xl font-bold leading-tight sm:text-3xl">
                   {certificate.title}
                 </h3>
 
-                <p className="mt-4 text-xl text-gray-400">
+                <p className="mt-4 text-base text-gray-400 sm:text-xl">
                   {certificate.issuer}
                 </p>
               </div>

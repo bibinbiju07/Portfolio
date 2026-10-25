@@ -16,6 +16,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Bibin | Portfolio",
   description: "Junior Software Engineer Portfolio",
+  icons: {
+    icon: {
+      url: "/favicon-icon.png",
+      type: "image/png",
+      sizes: "256x256",
+    },
+    shortcut: "/favicon-icon.png",
+  },
 };
 
 export default function RootLayout({

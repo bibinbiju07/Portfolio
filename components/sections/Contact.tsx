@@ -13,42 +13,42 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen bg-[#08111f] flex items-center justify-center text-white"
+      className="min-h-screen bg-[#08111f] flex items-center justify-center px-6 py-24 text-white sm:px-0 sm:py-0"
     >
-      <div className="text-center">
+      <div className="w-full max-w-2xl text-center">
 
         {/* Small Heading */}
-        <p className="uppercase tracking-[3px] text-blue-500 text-sm font-semibold">
+        <p className="uppercase tracking-[3px] theme-accent-text text-sm font-semibold">
           Get In Touch
         </p>
 
         {/* Main Heading */}
-        <h2 className="text-5xl font-bold mt-2">
+        <h2 className="mt-2 text-4xl font-bold sm:text-5xl">
           Contact
         </h2>
 
         {/* Blue Line */}
-        <div className="w-16 h-1 bg-blue-500 mx-auto rounded mt-5 mb-10"></div>
+        <div className="w-16 h-1 theme-accent-bg mx-auto rounded mt-5 mb-10"></div>
 
         {/* Contact Details */}
-        <div className="mt-10 w-fit mx-auto space-y-6">
-          <div className="flex items-center">
-            <FiMail className="text-3xl w-8 mr-6 flex-shrink-0" />
-            <span className="text-xl text-gray-300">
+        <div className="mx-auto mt-10 w-full max-w-xl space-y-6 text-left sm:w-fit">
+          <div className="flex min-w-0 items-center">
+            <FiMail className="mr-4 w-8 flex-shrink-0 text-2xl sm:mr-6 sm:text-3xl" />
+            <span className="break-all text-base text-gray-300 sm:text-xl">
               bibinbiju9676@gmail.com
             </span>
           </div>
 
-          <div className="flex items-center">
-            <FiPhone className="text-3xl w-8 mr-6 flex-shrink-0" />
-            <span className="text-xl text-gray-300">
+          <div className="flex min-w-0 items-center">
+            <FiPhone className="mr-4 w-8 flex-shrink-0 text-2xl sm:mr-6 sm:text-3xl" />
+            <span className="text-base text-gray-300 sm:text-xl">
               +91 8921979676
             </span>
           </div>
 
-          <div className="flex items-center">
-            <FiMapPin className="text-3xl w-8 mr-6 flex-shrink-0" />
-            <span className="text-xl text-gray-300">
+          <div className="flex min-w-0 items-center">
+            <FiMapPin className="mr-4 w-8 flex-shrink-0 text-2xl sm:mr-6 sm:text-3xl" />
+            <span className="text-base text-gray-300 sm:text-xl">
               Adimali, Idukki, Kerala, India
             </span>
           </div>
@@ -61,7 +61,7 @@ export default function Contact() {
             href="https://github.com/bibinbiju07"
             target="_blank"
             rel="noreferrer"
-            className="hover:text-blue-500 transition"
+            className="theme-accent-hover-text transition"
           >
             <FaGithub />
           </a>
@@ -70,14 +70,14 @@ export default function Contact() {
             href="https://linkedin.com"
             target="_blank"
             rel="noreferrer"
-            className="hover:text-blue-500 transition"
+            className="theme-accent-hover-text transition"
           >
             <FaLinkedin />
           </a>
 
           <a
             href="mailto:bibinbiju9676@gmail.com"
-            className="hover:text-blue-500 transition"
+            className="theme-accent-hover-text transition"
           >
             <FiMail />
           </a>

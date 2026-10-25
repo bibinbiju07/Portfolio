@@ -33,12 +33,12 @@ export default function Experience() {
         <div className="mb-16">
           <h2 className="text-4xl font-bold sm:text-5xl">Experience</h2>
 
-          <div className="mt-4 w-14 h-1 rounded-full bg-blue-500"></div>
+          <div className="mt-4 w-14 h-1 rounded-full theme-accent-bg"></div>
         </div>
 
         <div className="relative">
           {/* Vertical Timeline */}
-          <div className="absolute left-2 top-8 h-[260px] w-[2px] bg-blue-900"></div>
+          <div className="absolute left-2 top-8 h-[260px] w-[2px] theme-accent-bg-soft"></div>
 
           <div className="space-y-20">
             {experiences.map((item, index) => {
@@ -62,10 +62,10 @@ export default function Experience() {
                       w-4
                       h-4
                       rounded-full
-                      bg-blue-500
-                      shadow-[0_0_20px_rgba(59,130,246,0.9)]
+                      theme-accent-bg
                       z-20
                     "
+                    style={{ boxShadow: "0 0 20px rgba(var(--theme-accent-rgb), .9)" }}
                   ></div>
 
                   {/* Icon */}
@@ -75,12 +75,10 @@ export default function Experience() {
                       w-20
                       h-20
                       rounded-2xl
-                      bg-gradient-to-br
-                      from-blue-700
-                      to-blue-950
+                      theme-accent-card-gradient
                       border
-                      border-blue-700/40
-                      shadow-[0_0_35px_rgba(37,99,235,.35)]
+                      theme-accent-border
+                      theme-accent-glow
                       flex
                       items-center
                       justify-center
@@ -97,7 +95,7 @@ export default function Experience() {
                       {item.title}
                     </h3>
 
-                    <p className="mt-2 text-base text-blue-400 font-semibold sm:text-lg">
+                    <p className="mt-2 text-base theme-accent-text-light font-semibold sm:text-lg">
                       {item.company}
                       {item.duration && (
                         <>

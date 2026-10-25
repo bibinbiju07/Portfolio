@@ -10,8 +10,8 @@ export default function About() {
       className="relative overflow-hidden bg-[#050B18] py-20 sm:py-28"
     >
       {/* Background Glow */}
-      <div className="absolute left-0 top-20 h-72 w-72 rounded-full bg-blue-600/10 blur-[120px]" />
-      <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-[160px]" />
+      <div className="absolute left-0 top-20 h-72 w-72 rounded-full theme-accent-bg-soft blur-[120px]" />
+      <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full theme-accent-bg-soft blur-[160px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
 
@@ -25,7 +25,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: .8 }}
           >
-            <p className="text-sm font-bold uppercase tracking-[3px] text-blue-500">
+            <p className="text-sm font-bold uppercase tracking-[3px] theme-accent-text">
               Get To Know Me
             </p>
 
@@ -33,7 +33,7 @@ export default function About() {
               About Me
             </h2>
 
-            <div className="mt-5 h-1 w-14 rounded-full bg-blue-500" />
+            <div className="mt-5 h-1 w-14 rounded-full theme-accent-bg" />
 
             <div className="mt-8 space-y-6 text-base leading-8 text-gray-400 sm:mt-10 sm:space-y-8 sm:text-lg sm:leading-9">
 
@@ -74,11 +74,11 @@ export default function About() {
 
               {/* Glow */}
 
-              <div className="absolute inset-10 rounded-full bg-blue-500/20 blur-3xl" />
+              <div className="absolute inset-10 rounded-full theme-accent-bg-soft blur-3xl" />
 
               {/* Card */}
 
-              <div className="relative flex h-[min(340px,82vw)] w-[min(340px,82vw)] items-center justify-center rounded-[32px] border border-white/10 bg-gradient-to-b from-[#111827]/90 to-[#0B1220]/90 backdrop-blur-xl shadow-[0_20px_80px_rgba(37,99,235,.15)]">
+              <div className="relative flex h-[82vw] max-h-[340px] w-[82vw] max-w-[340px] items-center justify-center rounded-[32px] border border-white/10 bg-gradient-to-b from-[#111827]/90 to-[#0B1220]/90 backdrop-blur-xl theme-accent-glow-soft">
 
                 {/* Inner Icon Card */}
 
@@ -91,7 +91,7 @@ export default function About() {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="rounded-3xl border border-blue-500/30 bg-gradient-to-b from-blue-600 to-[#1F2A44] p-8 shadow-[0_0_40px_rgba(59,130,246,.35)]"
+                  className="rounded-3xl border theme-accent-border theme-accent-card-gradient p-8 theme-accent-glow"
                 >
 
                   <FiUser

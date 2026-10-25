@@ -33,17 +33,17 @@ const stats = [
 
 export default function Statistics() {
   return (
-    <section className="bg-[#030712] py-24 text-white">
+    <section className="bg-[#030712] py-20 text-white sm:py-24">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
 
         <div className="mb-14">
-          <h2 className="text-5xl font-bold">
+          <h2 className="text-4xl font-bold sm:text-5xl">
             Let's Connect
           </h2>
 
-          <div className="mt-4 h-1 w-12 rounded-full bg-blue-500"></div>
+          <div className="mt-4 h-1 w-12 rounded-full theme-accent-bg"></div>
         </div>
 
         {/* Cards */}
@@ -69,12 +69,12 @@ export default function Statistics() {
                   border-white/10
                   bg-white/[0.03]
                   backdrop-blur-xl
-                  p-8
+                  p-6 sm:p-8
                   text-center
                   transition-all
                   duration-300
-                  hover:border-blue-500/60
-                  hover:shadow-[0_0_30px_rgba(37,99,235,.18)]
+                  theme-accent-hover-border
+                  theme-accent-glow-hover
                 "
               >
                 <div
@@ -87,21 +87,19 @@ export default function Statistics() {
                     justify-center
                     rounded-2xl
                     border
-                    border-blue-600/40
-                    bg-gradient-to-br
-                    from-blue-700
-                    to-blue-950
-                    shadow-[0_0_30px_rgba(37,99,235,.35)]
+                    theme-accent-border
+                    theme-accent-card-gradient
+                    theme-accent-glow
                   "
                 >
-                  <Icon className="h-8 w-8 text-blue-400" />
+                  <Icon className="h-8 w-8 theme-accent-text-light" />
                 </div>
 
-                <h3 className="mt-7 text-6xl font-bold text-blue-500">
+                <h3 className="mt-7 text-5xl font-bold theme-accent-text sm:text-6xl">
                   {item.value}
                 </h3>
 
-                <p className="mt-3 text-xl text-gray-300">
+                <p className="mt-3 text-lg text-gray-300 sm:text-xl">
                   {item.label}
                 </p>
               </motion.div>
