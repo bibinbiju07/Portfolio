@@ -30,11 +30,11 @@ const categories = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="bg-[#030712] text-white py-24">
+    <section id="skills" className="bg-[#030712] py-20 text-white sm:py-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-12">
           <p className="text-sm uppercase tracking-[0.5em] text-blue-400 mb-3">What I know</p>
-          <h2 className="text-5xl font-bold">Skills</h2>
+          <h2 className="text-4xl font-bold sm:text-5xl">Skills</h2>
           <p className="mt-4 max-w-2xl text-gray-400">
             Technologies and tools I use to build modern, scalable, and reliable applications.
           </p>

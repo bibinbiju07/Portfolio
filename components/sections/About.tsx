@@ -7,7 +7,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[#050B18] py-28"
+      className="relative overflow-hidden bg-[#050B18] py-20 sm:py-28"
     >
       {/* Background Glow */}
       <div className="absolute left-0 top-20 h-72 w-72 rounded-full bg-blue-600/10 blur-[120px]" />
@@ -15,7 +15,7 @@ export default function About() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
 
-        <div className="grid items-center gap-20 lg:grid-cols-2">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
 
           {/* LEFT */}
 
@@ -29,13 +29,13 @@ export default function About() {
               Get To Know Me
             </p>
 
-            <h2 className="mt-3 text-5xl font-bold text-white">
+            <h2 className="mt-3 text-4xl font-bold text-white sm:text-5xl">
               About Me
             </h2>
 
             <div className="mt-5 h-1 w-14 rounded-full bg-blue-500" />
 
-            <div className="mt-10 space-y-8 text-lg leading-9 text-gray-400">
+            <div className="mt-8 space-y-6 text-base leading-8 text-gray-400 sm:mt-10 sm:space-y-8 sm:text-lg sm:leading-9">
 
               <p>
                 I am a <span className="text-white">Junior Software Engineer</span> currently
@@ -78,7 +78,7 @@ export default function About() {
 
               {/* Card */}
 
-              <div className="relative flex h-[340px] w-[340px] items-center justify-center rounded-[32px] border border-white/10 bg-gradient-to-b from-[#111827]/90 to-[#0B1220]/90 backdrop-blur-xl shadow-[0_20px_80px_rgba(37,99,235,.15)]">
+              <div className="relative flex h-[min(340px,82vw)] w-[min(340px,82vw)] items-center justify-center rounded-[32px] border border-white/10 bg-gradient-to-b from-[#111827]/90 to-[#0B1220]/90 backdrop-blur-xl shadow-[0_20px_80px_rgba(37,99,235,.15)]">
 
                 {/* Inner Icon Card */}
 

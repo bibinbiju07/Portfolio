@@ -11,7 +11,6 @@ import {
   FiMail,
   FiGlobe,
 } from "react-icons/fi";
-import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -25,10 +24,10 @@ export default function Hero() {
       <div className="absolute left-20 top-24 h-72 w-72 rounded-full bg-blue-600/10 blur-[120px]" />
       <div className="absolute right-24 bottom-20 h-80 w-80 rounded-full bg-cyan-500/10 blur-[150px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-36 pb-16">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-32 pb-16 sm:pt-36">
 
 
-        <div className="grid lg:grid-cols-2 items-center gap-16">
+        <div className="grid min-w-0 items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
           {/* LEFT */}
 
@@ -36,23 +35,24 @@ export default function Hero() {
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: .8 }}
+            className="min-w-0"
           >
-            <div className="inline-flex items-center gap-3 rounded-2xl border border-blue-500/20 bg-blue-500/10 px-6 py-3 text-2xl text-blue-400">
+            <div className="inline-flex items-center gap-3 rounded-2xl border border-blue-500/20 bg-blue-500/10 px-5 py-3 text-xl text-blue-400 sm:px-6 sm:text-2xl">
               👋 Hello, I'm
             </div>
 
-            <h1 className="mt-8 font-extrabold leading-none text-white text-6xl lg:text-7xl">
+            <h1 className="mt-8 text-5xl font-extrabold leading-none text-white sm:text-6xl lg:text-7xl">
               Bibin{" "}
               <span className="text-blue-500">
                 Biju
               </span>
             </h1>
 
-            <h2 className="mt-8 text-2xl font-medium text-gray-300">
+            <h2 className="mt-6 text-xl font-medium text-gray-300 sm:mt-8 sm:text-2xl">
               Junior Software Engineer
             </h2>
 
-            <p className="mt-8 text-lg leading-9 max-w-lg text-gray-400">
+            <p className="mt-6 max-w-lg text-base leading-8 text-gray-400 sm:mt-8 sm:text-lg sm:leading-9">
               Building modern web applications using .NET Core MVC,
               React, Next.js, JavaScript, and AI-powered
               solutions. Passionate about creating scalable and
@@ -61,11 +61,11 @@ export default function Hero() {
 
             {/* Buttons */}
 
-            <div className="mt-12 flex flex-wrap gap-5">
+            <div className="mt-10 flex flex-wrap gap-4 sm:mt-12 sm:gap-5">
 
               <a
                 href="#projects"
-                className="group flex items-center gap-3 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 px-10 py-5 text-lg font-semibold text-white shadow-[0_15px_40px_rgba(37,99,235,.4)] transition hover:scale-105"
+                className="group flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-4 text-base font-semibold text-white shadow-[0_15px_40px_rgba(37,99,235,.4)] transition hover:scale-105 sm:w-auto sm:px-10 sm:py-5 sm:text-lg"
               >
                 View Projects
 
@@ -75,7 +75,7 @@ export default function Hero() {
               <a
                 href="/Resume.pdf"
                 download="Bibin_Biju_Resume.pdf"
-                className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-10 py-5 text-lg text-white backdrop-blur hover:border-blue-500"
+                className="flex w-full items-center justify-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-base text-white backdrop-blur hover:border-blue-500 sm:w-auto sm:px-10 sm:py-5 sm:text-lg"
               >
                 <FaDownload />
                 Download Resume
@@ -85,7 +85,7 @@ export default function Hero() {
 
             {/* Social */}
 
-            <div className="mt-12 flex gap-6">
+            <div className="mt-10 flex gap-4 sm:mt-12 sm:gap-6">
 
               {[
                 {
@@ -108,7 +108,7 @@ export default function Hero() {
                 <a
                   key={i}
                   href={item.link}
-                  className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-2xl text-white transition hover:border-blue-500 hover:text-blue-400"
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-xl text-white transition hover:border-blue-500 hover:text-blue-400 sm:h-16 sm:w-16 sm:text-2xl"
                 >
                   {item.icon}
                 </a>
@@ -122,9 +122,9 @@ export default function Hero() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: .8 }}
-            className="flex justify-center"
+            className="flex min-w-0 justify-center"
           >
-            <div className="relative h-[500px] w-[500px]">
+            <div className="relative aspect-square w-full max-w-[500px]">
 
               {/* Glow */}
 
@@ -212,9 +212,9 @@ export default function Hero() {
               </div>
 
               {/* Avatar */}
-              <div className="absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-3xl" />
+              <div className="absolute left-1/2 top-1/2 h-[68%] w-[68%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-3xl" />
               <motion.div
-                className="absolute left-1/2 top-1/2 flex h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#0B1220]"
+                className="absolute left-1/2 top-1/2 flex h-[52%] w-[52%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#0B1220]"
                 animate={{
                   y: [-10, 10, -10],
                   rotate: [-1, 1, -1],
@@ -228,7 +228,7 @@ export default function Hero() {
                 <img
                   src="/images/avatar.png"
                   alt="avatar"
-                  className="w-[250px] object-contain"
+                  className="w-[96%] object-contain"
                 />
 
               </motion.div>

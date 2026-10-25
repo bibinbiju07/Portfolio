@@ -26,12 +26,12 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="bg-[#030712] text-white py-24"
+      className="bg-[#030712] py-20 text-white sm:py-24"
     >
       <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
         <div className="mb-16">
-          <h2 className="text-5xl font-bold">Experience</h2>
+          <h2 className="text-4xl font-bold sm:text-5xl">Experience</h2>
 
           <div className="mt-4 w-14 h-1 rounded-full bg-blue-500"></div>
         </div>
@@ -51,7 +51,7 @@ export default function Experience() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
-                  className="relative flex items-start gap-8"
+                  className="relative flex items-start gap-5 sm:gap-8"
                 >
                   {/* Timeline Dot */}
                   <div
@@ -71,7 +71,7 @@ export default function Experience() {
                   {/* Icon */}
                   <div
                     className="
-                      ml-10
+                      ml-8 sm:ml-10
                       w-20
                       h-20
                       rounded-2xl
@@ -93,11 +93,11 @@ export default function Experience() {
 
                   {/* Content */}
                   <div className="pt-1 max-w-2xl">
-                    <h3 className="text-4xl font-bold">
+                    <h3 className="text-2xl font-bold sm:text-4xl">
                       {item.title}
                     </h3>
 
-                    <p className="mt-2 text-blue-400 text-lg font-semibold">
+                    <p className="mt-2 text-base text-blue-400 font-semibold sm:text-lg">
                       {item.company}
                       {item.duration && (
                         <>
@@ -107,7 +107,7 @@ export default function Experience() {
                       )}
                     </p>
 
-                    <p className="mt-5 text-gray-400 text-lg leading-8">
+                    <p className="mt-5 text-base text-gray-400 leading-8 sm:text-lg">
                       {item.description}
                     </p>
                   </div>

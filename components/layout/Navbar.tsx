@@ -69,7 +69,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-6 left-0 right-0 z-50">
+    <header className="fixed left-0 right-0 top-4 z-50 sm:top-6">
       <div className="mx-auto max-w-7xl px-6">
         <div
           className={`w-full flex items-center justify-between
@@ -80,7 +80,7 @@ export default function Navbar() {
               : "bg-[#0B1120]/75 backdrop-blur-xl"
             }
         h-20
-        px-12
+        px-5 sm:px-12
         transition-all
         duration-300`}
         >
@@ -94,7 +94,7 @@ export default function Navbar() {
                   behavior: "smooth",
                 })
               }
-              className="text-3xl font-bold text-white"
+              className="text-2xl font-bold text-white sm:text-3xl"
             >
               Bibin<span className="text-blue-500">.</span>
             </button>
@@ -172,9 +172,9 @@ export default function Navbar() {
                   opacity: 0,
                   height: 0,
                 }}
-                className="md:hidden"
+                className="absolute left-6 right-6 top-full mt-3 rounded-3xl border border-white/10 bg-[#0B1120]/95 shadow-2xl backdrop-blur-2xl md:hidden"
               >
-                <div className="space-y-5 border-t border-white/10 px-8 py-6">
+                <div className="space-y-5 px-6 py-6">
                   {LINKS.map((link) => (
                     <a
                       key={link.id}
