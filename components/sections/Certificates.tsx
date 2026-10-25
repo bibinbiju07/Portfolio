@@ -16,7 +16,7 @@ const certificates = [
 
 export default function Certificates() {
   return (
-    <section className="bg-[#030712] pb-24 text-white">
+    <section id="certificates" className="bg-[#030712] pb-24 text-white">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}

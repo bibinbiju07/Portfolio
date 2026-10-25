@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "@/components/sections/Footer";
+import { MotionProvider } from "@/components/shared/MotionProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -38,8 +39,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-screen bg-[#050A16] text-white antialiased">
-        {children}
-        <Footer />
+        <MotionProvider>
+          {children}
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

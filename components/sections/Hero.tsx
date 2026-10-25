@@ -1,6 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   FaGithub,
   FaLinkedin,
@@ -12,16 +14,51 @@ import {
   FiGlobe,
 } from "react-icons/fi";
 
+const entrance = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export default function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const section = heroRef.current;
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!section || !finePointer.matches || reducedMotion.matches) return;
+
+    const handlePointerMove = (event: PointerEvent) => {
+      const bounds = section.getBoundingClientRect();
+      section.style.setProperty("--mouse-x", `${event.clientX - bounds.left}px`);
+      section.style.setProperty("--mouse-y", `${event.clientY - bounds.top}px`);
+    };
+
+    section.addEventListener("pointermove", handlePointerMove, { passive: true });
+    return () => section.removeEventListener("pointermove", handlePointerMove);
+  }, []);
+
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#050A16]">
+    <section ref={heroRef} className="hero-section relative min-h-screen overflow-hidden bg-[#050A16]">
 
       {/* Background */}
       <div className="absolute inset-0 theme-hero-background" />
+      <div aria-hidden="true" className="hero-grid absolute inset-0 pointer-events-none" />
+      <div aria-hidden="true" className="hero-pointer-glow absolute inset-0 pointer-events-none" />
 
-      {/* Blur */}
-      <div className="absolute left-20 top-24 h-72 w-72 rounded-full theme-accent-bg-soft blur-[120px]" />
-      <div className="absolute right-24 bottom-20 h-80 w-80 rounded-full theme-accent-bg-soft blur-[150px]" />
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-[8%] top-28 hidden h-64 w-64 rounded-full theme-accent-bg-soft blur-[100px] md:block"
+        animate={reduceMotion ? undefined : { x: [0, 22, 0], y: [0, -16, 0] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-16 right-[8%] hidden h-72 w-72 rounded-full bg-violet-500/10 blur-[110px] md:block"
+        animate={reduceMotion ? undefined : { x: [0, -18, 0], y: [0, 14, 0] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+      />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pt-32 pb-16 sm:pt-36">
 
@@ -31,36 +68,36 @@ export default function Hero() {
           {/* LEFT */}
 
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: .8 }}
+            initial={reduceMotion ? false : "hidden"}
+            animate="visible"
+            variants={{ visible: { transition: { staggerChildren: reduceMotion ? 0 : 0.1 } } }}
             className="min-w-0"
           >
-            <div className="inline-flex items-center gap-3 rounded-2xl border theme-accent-border-soft theme-accent-bg-soft px-5 py-3 text-xl theme-accent-text-light sm:px-6 sm:text-2xl">
-              👋 Hello, I'm
-            </div>
+            <motion.div variants={entrance} className="inline-flex items-center gap-3 rounded-2xl border theme-accent-border-soft theme-accent-bg-soft px-5 py-3 text-xl theme-accent-text-light sm:px-6 sm:text-2xl">
+              👋 Hello, I&apos;m
+            </motion.div>
 
-            <h1 className="mt-8 text-5xl font-extrabold leading-none text-white sm:text-6xl lg:text-7xl">
+            <motion.h1 variants={entrance} className="mt-8 text-5xl font-extrabold leading-none text-white sm:text-6xl lg:text-7xl">
               Bibin{" "}
               <span className="theme-accent-text">
                 Biju
               </span>
-            </h1>
+            </motion.h1>
 
-            <h2 className="mt-6 text-xl font-medium text-gray-300 sm:mt-8 sm:text-2xl">
+            <motion.h2 variants={entrance} className="mt-6 text-xl font-medium text-gray-300 sm:mt-8 sm:text-2xl">
               Junior Software Engineer
-            </h2>
+            </motion.h2>
 
-            <p className="mt-6 max-w-lg text-base leading-8 text-gray-400 sm:mt-8 sm:text-lg sm:leading-9">
+            <motion.p variants={entrance} className="mt-6 max-w-lg text-base leading-8 text-gray-400 sm:mt-8 sm:text-lg sm:leading-9">
               Building modern web applications using .NET Core MVC,
               React, Next.js, JavaScript, and AI-powered
               solutions. Passionate about creating scalable and
               beautiful software.
-            </p>
+            </motion.p>
 
             {/* Buttons */}
 
-            <div className="mt-10 flex flex-wrap gap-4 sm:mt-12 sm:gap-5">
+            <motion.div variants={entrance} className="mt-10 flex flex-wrap gap-4 sm:mt-12 sm:gap-5">
 
               <a
                 href="#projects"
@@ -80,11 +117,11 @@ export default function Hero() {
                 Download Resume
               </a>
 
-            </div>
+            </motion.div>
 
             {/* Social */}
 
-            <div className="mt-10 flex gap-4 sm:mt-12 sm:gap-6">
+            <motion.div variants={entrance} className="mt-10 flex gap-4 sm:mt-12 sm:gap-6">
 
               {[
                 {
@@ -112,15 +149,15 @@ export default function Hero() {
                   {item.icon}
                 </a>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* RIGHT */}
 
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: .8 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.7, delay: reduceMotion ? 0 : 0.25 }}
             className="flex min-w-0 justify-center"
           >
             <div className="relative aspect-square w-full max-w-[500px]">
@@ -128,7 +165,8 @@ export default function Hero() {
               {/* Glow */}
 
               <motion.div
-                className="absolute inset-[60px] rounded-full border theme-accent-border theme-accent-glow-strong" animate={{ rotate: 360 }}
+                className="absolute inset-[60px] rounded-full border theme-accent-border theme-accent-glow-strong"
+                animate={reduceMotion ? undefined : { rotate: 360 }}
                 transition={{
                   duration: 40,
                   repeat: Infinity,
@@ -137,7 +175,7 @@ export default function Hero() {
               />
               <motion.div
                 className="absolute inset-0 rounded-full border theme-accent-border-soft"
-                animate={{ rotate: -360 }}
+                animate={reduceMotion ? undefined : { rotate: -360 }}
                 transition={{
                   duration: 60,
                   repeat: Infinity,
@@ -151,13 +189,13 @@ export default function Hero() {
 
                 {/* Orbiting dots */}
                 {[
-                  { angle: 20, duration: 20 },
-                  { angle: 200, duration: 20 },
+                  { angle: 20, duration: 28 },
+                  { angle: 200, duration: 28 },
                 ].map((dot, i) => (
                   <motion.div
                     key={i}
                     className="absolute inset-0"
-                    animate={{ rotate: 360 }}
+                    animate={reduceMotion ? undefined : { rotate: 360 }}
                     transition={{
                       duration: dot.duration,
                       repeat: Infinity,
@@ -179,10 +217,6 @@ export default function Hero() {
                   { left: "24%", top: "14%", size: 10 },
                   { left: "76%", top: "10%", size: 7 },
                   { left: "92%", top: "42%", size: 9 },
-                  { left: "84%", top: "78%", size: 7 },
-                  { left: "66%", top: "92%", size: 6 },
-                  { left: "34%", top: "94%", size: 5 },
-                  { left: "6%", top: "70%", size: 8 },
                 ].map((star, i) => (
                   <motion.div
                     key={`star-${i}`}
@@ -194,7 +228,7 @@ export default function Hero() {
                       height: star.size,
                       boxShadow: "0 0 12px var(--theme-accent)",
                     }}
-                    animate={{
+                    animate={reduceMotion ? undefined : {
                       opacity: [0.2, 1, 0.2],
                       scale: [0.8, 1.3, 0.8],
                       x: [-2, 2, -2],
@@ -214,7 +248,7 @@ export default function Hero() {
               <div className="absolute left-1/2 top-1/2 h-[68%] w-[68%] -translate-x-1/2 -translate-y-1/2 rounded-full theme-accent-bg-soft blur-3xl" />
               <motion.div
                 className="theme-avatar-backdrop absolute left-1/2 top-1/2 flex h-[52%] w-[52%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full"
-                animate={{
+                animate={reduceMotion ? undefined : {
                   y: [-10, 10, -10],
                   rotate: [-1, 1, -1],
                 }}
@@ -224,10 +258,13 @@ export default function Hero() {
                   ease: "easeInOut",
                 }}
               >
-                <img
+                <Image
                   src="/images/avatar.png"
-                  alt="avatar"
+                  alt="Illustrated portrait of Bibin working at a laptop"
+                  width={512}
+                  height={512}
                   className="w-[96%] object-contain"
+                  priority
                 />
 
               </motion.div>

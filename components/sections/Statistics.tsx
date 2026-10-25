@@ -33,14 +33,14 @@ const stats = [
 
 export default function Statistics() {
   return (
-    <section className="bg-[#030712] py-20 text-white sm:py-24">
+    <section id="statistics" className="bg-[#030712] py-20 text-white sm:py-24">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
 
         <div className="mb-14">
           <h2 className="text-4xl font-bold sm:text-5xl">
-            Let's Connect
+            Let&apos;s Connect
           </h2>
 
           <div className="mt-4 h-1 w-12 rounded-full theme-accent-bg"></div>

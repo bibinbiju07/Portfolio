@@ -34,38 +34,46 @@ export default function Navbar() {
   const [selectedTheme, setSelectedTheme] = useState<ThemeId>("blue");
   const [autoRotate, setAutoRotate] = useState(false);
   const [lightMode, setLightMode] = useState(false);
+  const [preferencesReady, setPreferencesReady] = useState(false);
 
   useEffect(() => {
-    const savedTheme = window.localStorage.getItem("portfolio-theme");
-    const savedAutoRotate = window.localStorage.getItem("portfolio-auto-rotate");
-    const savedMode = window.localStorage.getItem("portfolio-mode");
+    const frameId = window.requestAnimationFrame(() => {
+      const savedTheme = window.localStorage.getItem("portfolio-theme");
+      const savedAutoRotate = window.localStorage.getItem("portfolio-auto-rotate");
+      const savedMode = window.localStorage.getItem("portfolio-mode");
 
-    if (isThemeId(savedTheme)) {
-      setSelectedTheme(savedTheme);
-      document.documentElement.dataset.theme = savedTheme;
-    }
+      if (isThemeId(savedTheme)) setSelectedTheme(savedTheme);
+      setAutoRotate(savedAutoRotate === "true");
+      setLightMode(savedMode === "light");
+      setPreferencesReady(true);
+    });
 
-    setAutoRotate(savedAutoRotate === "true");
-    const useLightMode = savedMode === "light";
-    setLightMode(useLightMode);
-    document.documentElement.dataset.mode = useLightMode ? "light" : "dark";
+    return () => window.cancelAnimationFrame(frameId);
   }, []);
 
   useEffect(() => {
-    if (!autoRotate) return;
+    if (!preferencesReady) return;
+    document.documentElement.dataset.theme = selectedTheme;
+    window.localStorage.setItem("portfolio-theme", selectedTheme);
+  }, [preferencesReady, selectedTheme]);
+
+  useEffect(() => {
+    if (!preferencesReady) return;
+    document.documentElement.dataset.mode = lightMode ? "light" : "dark";
+    window.localStorage.setItem("portfolio-mode", lightMode ? "light" : "dark");
+    window.localStorage.setItem("portfolio-auto-rotate", String(autoRotate));
+  }, [autoRotate, lightMode, preferencesReady]);
+
+  useEffect(() => {
+    if (!preferencesReady || !autoRotate) return;
 
     const intervalId = window.setInterval(() => {
-      setSelectedTheme((currentTheme) => {
-        const currentIndex = THEMES.findIndex((theme) => theme.id === currentTheme);
-        const nextTheme = THEMES[(currentIndex + 1) % THEMES.length];
-        document.documentElement.dataset.theme = nextTheme.id;
-        window.localStorage.setItem("portfolio-theme", nextTheme.id);
-        return nextTheme.id;
-      });
+      const currentIndex = THEMES.findIndex((theme) => theme.id === selectedTheme);
+      setSelectedTheme(THEMES[(currentIndex + 1) % THEMES.length].id);
     }, 5000);
 
     return () => window.clearInterval(intervalId);
-  }, [autoRotate]);
+  }, [autoRotate, preferencesReady, selectedTheme]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -114,27 +122,15 @@ export default function Navbar() {
 
   const selectTheme = (theme: ThemeId) => {
     setSelectedTheme(theme);
-    document.documentElement.dataset.theme = theme;
-    window.localStorage.setItem("portfolio-theme", theme);
     setThemePickerOpen(false);
   };
 
   const toggleAutoRotate = () => {
-    setAutoRotate((enabled) => {
-      const nextEnabled = !enabled;
-      window.localStorage.setItem("portfolio-auto-rotate", String(nextEnabled));
-      return nextEnabled;
-    });
+    setAutoRotate((enabled) => !enabled);
   };
 
   const toggleMode = () => {
-    setLightMode((isLight) => {
-      const nextLightMode = !isLight;
-      const nextMode = nextLightMode ? "light" : "dark";
-      document.documentElement.dataset.mode = nextMode;
-      window.localStorage.setItem("portfolio-mode", nextMode);
-      return nextLightMode;
-    });
+    setLightMode((isLight) => !isLight);
   };
 
   return (

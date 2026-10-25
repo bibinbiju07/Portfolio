@@ -7,6 +7,7 @@ import Projects from "@/components/sections/Projects";
 import Statistics from "@/components/sections/Statistics";
 import Certificates from "@/components/sections/Certificates";
 import Contact from "@/components/sections/Contact";
+import CommandPalette from "@/components/shared/CommandPalette";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Certificates />
         <Contact />
       </main>
+      <CommandPalette />
     </>
   );
 }
